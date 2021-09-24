@@ -1,0 +1,20 @@
+{
+  "name": "sai-baby-server",
+  "version": "1.0.0",
+  "description": "Backend server for sai baby computers apps",
+  "main": "src/index.ts",
+  "author": {
+    "name": "Dev Ganesh Pandian",
+    "email": "devganesh91@gmail.com",
+    "url": "https://github.com/devganesh1998"
+  },
+  "private": "true",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.1",
+    "morgan": "^1.10.0"
+  }
+}
