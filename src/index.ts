@@ -3,7 +3,8 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import cors from 'cors';
-import { isDev, isProd, ALLOWED_ORIGINS, PORT } from './config';
+import mongoose from 'mongoose';
+import { isDev, isProd, ALLOWED_ORIGINS, PORT, MONGO_URI } from './config';
 // import appRoutes from './routes';
 
 dotenv.config();
@@ -39,6 +40,10 @@ app.get('/info', (_req, res) => {
     let retries = 5;
     while (retries) {
         try {
+            await mongoose.connect(MONGO_URI);
+            mongoose.connection.on('error', () => {
+                throw new Error(`unable to connect to database: ${MONGO_URI}`);
+            });
             app.listen(PORT, () => {
                 console.log(`listening on: http://localhost:${PORT}`);
             });
